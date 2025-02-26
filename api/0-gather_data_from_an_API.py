@@ -17,7 +17,17 @@ def extract_data(employee_id):
     
 """
     Function to extract and display information about an employee's completed tasks.
-   
+ Args:
+        employee_id (int): The ID of the employee whose data you want to fetch.
+    
+    Process:
+        - Makes an HTTP request to the USERS_URL endpoint to fetch the employee's details.
+        - Makes an HTTP request to the TODOS_URL endpoint to get the list of todo items for the employee.
+        - Iterates through the employee's todos and counts how many are marked as 'completed'.
+    
+    Returns:
+        None: This function prints the result to the console. It doesn't return anything.
+      
  """
     employee = requests.get(f"{USERS_URL}/{employee_id}").json()
     employee_name = employee["name"]
