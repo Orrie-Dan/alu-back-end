@@ -31,11 +31,11 @@ def extract_data(employee_id):
     """
     
     # Fetch employee data (name) from the API based on the employee_id.
-    employee = requests.get(f"{USERS_URL}/{employee_id}").json()  # Make GET request to fetch employee details.
+    employee = requests.get("{}{}".format(USERS_URL,employee_id)).json()  # Make GET request to fetch employee details.
     employee_name = employee["name"]  # Extract the employee's name from the response JSON.
 
     # Fetch the list of todos associated with the employee using their employee_id.
-    employee_todos = requests.get(f"{TODOS_URL}?userId={employee_id}").json()  # Make GET request for todos.
+    employee_todos = requests.get("{}?userId={}".format(TODOS_URL, employee_id)).json()  # Make GET request for todos.
 
     # Initialize a variable to count the completed tasks.
     completed_tasks = 0
@@ -46,7 +46,7 @@ def extract_data(employee_id):
             completed_tasks += 1  # Increment the count of completed tasks.
 
     # Print a message summarizing the number of completed tasks vs total tasks.
-    print(f"Employee {employee_name} is done with tasks ({completed_tasks}/{len(employee_todos)})")
+    print("Employee {} is done with tasks ({}/{})".format(employee_name, completed_tasks, len(employee_todos)))
 
 # Call the function with employee ID 1 to extract and display the data.
 extract_data(1)
