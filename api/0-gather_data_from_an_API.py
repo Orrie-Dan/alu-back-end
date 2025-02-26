@@ -6,6 +6,19 @@ TODOS_URL = "https://jsonplaceholder.typicode.com/todos/"
 
 
 def extract_data(employee_id):
+
+import requests
+
+USERS_URL = "https://jsonplaceholder.typicode.com/users/"
+TODOS_URL = "https://jsonplaceholder.typicode.com/todos/"
+
+
+def extract_data(employee_id):
+    
+"""
+    Function to extract and display information about an employee's completed tasks.
+   
+ """
     employee = requests.get(f"{USERS_URL}/{employee_id}").json()
     employee_name = employee["name"]
     employee_todos = requests.get(f"{TODOS_URL}?userId={employee_id}").json()
