@@ -7,8 +7,8 @@ This module fetches employee details and their corresponding to-do list tasks fr
 a mock API (JSONPlaceholder) and exports the data to a CSV file. Each task entry
 includes the employee ID, username, task completion status, and task title.
 """
-import requests
 import csv
+import requests
 
 # API endpoints
 USERS_URL = "https://jsonplaceholder.typicode.com/users/"
